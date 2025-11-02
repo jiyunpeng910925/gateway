@@ -6,8 +6,9 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.5.6</version>
-		<relativePath/> <!-- lookup parent from repository -->
-	</parent>
+        <!-- 它告诉 Maven，父项目的 pom.xml 就在上一级目录 -->
+        <relativePath>../pom.xml</relativePath>
+    </parent>
 	<groupId>com.jyp</groupId>
 	<artifactId>gateway-product</artifactId>
 	<version>0.0.1-SNAPSHOT</version>

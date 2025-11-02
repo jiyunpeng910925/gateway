@@ -6,8 +6,9 @@
         <groupId>com.jyp</groupId>
         <artifactId>gateway-parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-		<relativePath/> <!-- lookup parent from repository -->
-	</parent>
+        <!-- 它告诉 Maven，父项目的 pom.xml 就在上一级目录 -->
+        <relativePath>../pom.xml</relativePath>
+    </parent>
 
 	<artifactId>gateway-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
