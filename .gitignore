@@ -1,0 +1,48 @@
+# Default ignored files
+/shelf/
+/.idea/workspace.xml
+
+# IDE specific files
+# IntelliJ
+.idea/
+*.iml
+*.iws
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# VS Code
+.vscode/
+
+# Build artifacts
+target/
+build/
+out/
+
+# Dependency directories
+node_modules/
+/lib/
+/libs/
+
+# Packaged applications
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+
+# Log files
+*.log
+logs/
+
+# Maven Wrapper
+# 如果你确定不想提交mvnw，就取消下面三行的注释
+.mvn/
+mvnw
+mvnw.cmd
+
+# Other
+.DS_Store
+Thumbs.db
