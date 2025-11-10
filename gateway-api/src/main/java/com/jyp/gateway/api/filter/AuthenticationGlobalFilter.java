@@ -17,6 +17,9 @@ import reactor.core.publisher.Mono;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * 过滤器
+ */
 @Component
 public class AuthenticationGlobalFilter implements GlobalFilter, Ordered{
 
