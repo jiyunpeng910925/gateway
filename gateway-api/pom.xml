@@ -48,6 +48,12 @@
 			<version>4.4.0</version> <!-- 建议使用一个较新的稳定版本 -->
 		</dependency>
 
+        <!-- 提供响应式的redis客户端，让限流器能工作 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis-reactive</artifactId>
+        </dependency>
+
 	</dependencies>
 
 	<build>
