@@ -27,6 +27,17 @@ spring:
                 - Path=/gateway-user/**    # 断言（Predicate），即匹配规则。所有匹配此路径的请求都会应用此规则
               filters:
                 - StripPrefix=1            # 过滤器（Filter），在转发前对请求进行处理。这里表示去掉路径的第一个部分
+                # 限流过滤器配置
+                - name: RequestRateLimiter
+                  args:
+                  # 每秒补充的令牌数
+                  redis-rate-limiter.replenishRate: 1
+                  # 令牌桶的总容量
+                  redis-rate-limiter.burstCapacity: 2
+                  # 用于区分不同限流规则的 Key
+                  redis-rate-limiter.requestedTokens: 1
+                  # SpEL 表达式，指定按什么维度进行限流，这里我们使用 KeyResolver 的 Bean 名称
+                  key-resolver: "#{@ipKeyResolver}"
 
             # 路由规则二：将发往 /product-service/** 的请求转发到 product-service
             - id: product_service_route
