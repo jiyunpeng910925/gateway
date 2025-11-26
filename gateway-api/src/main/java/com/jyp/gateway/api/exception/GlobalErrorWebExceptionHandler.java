@@ -19,7 +19,7 @@ import java.util.Map;
 
 @Component
 @Order(-2) // 【核心】设置最高优先级，确保在 Spring Boot 默认的异常处理器之前执行
-public class JsonExceptionHandler implements ErrorWebExceptionHandler {
+public class GlobalErrorWebExceptionHandler implements ErrorWebExceptionHandler {
 
     private final ObjectMapper objectMapper = new ObjectMapper();
 

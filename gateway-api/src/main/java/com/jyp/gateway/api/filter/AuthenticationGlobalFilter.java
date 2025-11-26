@@ -11,6 +11,7 @@ import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
@@ -25,8 +26,9 @@ public class AuthenticationGlobalFilter implements GlobalFilter, Ordered{
 
     // 白名单路径，放行不进行认证
     private static final List<String> WHITELIST = Arrays.asList(
-            "/user-service/login", // 假设的登录接口
-            "/user-service/register" // 假设的注册接口
+            "/gateway-user/users",
+            "/gateway-user/login", // 假设的登录接口
+            "/gateway-user/register" // 假设的注册接口
     );
 
     @Override
@@ -43,12 +45,14 @@ public class AuthenticationGlobalFilter implements GlobalFilter, Ordered{
         // 2. 获取 Token
         String token = getToken(request);
         if (!StringUtils.hasText(token)) {
-            return unauthorizedResponse(response, "Token not found");
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "请求未携带Token");
+            //return unauthorizedResponse(response, "Token not found");
         }
 
         // 3. 校验 Token
         if (!JwtUtil.validateToken(token)) {
-            return unauthorizedResponse(response, "Invalid Token");
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Token无效或已过期");
+            //return unauthorizedResponse(response, "Invalid Token");
         }
 
         // 4. 解析用户信息，并放入请求头

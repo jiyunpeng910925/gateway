@@ -40,7 +40,7 @@ spring:
                     # 令牌桶的总容量
                     redis-rate-limiter.burstCapacity: 2
                     # 用于区分不同限流规则的 Key
-                    redis-rate-limiter.requestedTokens: 1
+                    redis-rate-limiter.requestedTokens: 2
                     # SpEL 表达式，指定按什么维度进行限流，这里我们使用 KeyResolver 的 Bean 名称
                     key-resolver: "#{@ipKeyResolver}"
 
